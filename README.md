@@ -133,6 +133,13 @@ python .\tools\can_test.py `
 - 复位完成：PC 工具再次检测到 `0x123` 心跳。
 - DTC 持久化：确认故障后断电重启，`0x19 02` 仍能读取；执行 `0x14 FFFFFF` 后清除。
 
+## 系统复习题库
+
+- [无答案版](docs/review-question-bank.md)：共 105 题，适合先自行口述或书写答案。
+- [带答案版](docs/review-question-bank-with-answers.md)：逐题给出参考答案，并标出当前源码与设计意图之间需要校对的地方。
+
+建议先完整做无答案版，再按题号核对答案；遇到不清楚的内容，可以直接记录题号继续讨论。
+
 ## 主要代码入口
 
 - Application：`F407_Body_ECU/App/Src/can_app.c`
