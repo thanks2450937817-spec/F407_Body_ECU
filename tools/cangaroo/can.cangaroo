@@ -1,0 +1,51 @@
+<cangaroo-workspace cangaroo-version="0.6.4" workspace-version="1">
+ <tabs>
+  <tab ActiveTab="0" TimestampMode="2" dockstate="AAAA/wAAAAD9AAAAAQAAAAMAAAVPAAACWPwBAAAAAvwAAAAAAAAB8QAAAVQA////+gAAAAABAAAAAvsAAAAWAGQAbwBjAGsAXwBzAHQAYQB0AHUAcwEAAAAA/////wAAAE8A////+wAAABAAZABvAGMAawBfAGwAbwBnAQAAAAD/////AAABVAD////8AAAB9QAAA1oAAANaAP////oAAAAAAQAAAAT7AAAAHABkAG8AYwBrAF8AZwBlAG4AZQByAGEAdABvAHIBAAAAAP////8AAAMgAP////sAAAAUAGQAbwBjAGsAXwBnAHIAYQBwAGgBAAAAAP////8AAANaAP////sAAAAWAGQAbwBjAGsAXwBzAGMAcgBpAHAAdAEAAAAA/////wAAAgoA////+wAAABYAZABvAGMAawBfAHIAZQBwAGwAYQB5AQAAAAD/////AAACOwD///8AAAVPAAAAsgAAAAQAAAAEAAAACAAAAAj8AAAAAA==" mode="aggregated" modeJ1939="aggregated" modeUds="unified" title="Trace" type="TraceWindow">
+   <AggregatedTraceView SortColumn="-1"/>
+   <TraceFilter showRx="1" showTx="1"/>
+   <txgeneratorwindow splitterState="AAAA/wAAAAEAAAACAAABZgAAAdQB/////wEAAAABAA==" type="TxGeneratorWindow">
+    <frame brs="0" data="03 22 F1 86 00 00 00 00" dlc="8" extended="0" fd="0" id="0X7E0" interface="Network 1: COM17" interval="100" name="Manual"/>
+    <frame brs="0" data="02 10 03 00 00 00 00 00" dlc="8" extended="0" fd="0" id="0X7E0" interface="Network 1: COM17" interval="100" name="Manual"/>
+    <frame brs="0" data="02 3E 00 00 00 00 00 00" dlc="8" extended="0" fd="0" id="0X7E0" interface="Network 1: COM17" interval="100" name="Manual"/>
+    <frame brs="0" data="02 01 01" dlc="3" extended="0" fd="0" id="0X200" interface="Network 1: COM17" interval="100" name="Manual"/>
+    <frame brs="0" data="03 19 02 08 00 00 00 00" dlc="8" extended="0" fd="0" id="0X7E0" interface="Network 1: COM17" interval="100" name="Manual"/>
+    <frame brs="0" data="04 14 FF FF FF" dlc="5" extended="0" fd="0" id="0X7E0" interface="Network 1: COM17" interval="100" name="Manual"/>
+    <frame brs="0" data="02 10 02 00 00 00 00 00" dlc="8" extended="0" fd="0" id="0X7E0" interface="Network 1: COM17" interval="100" name="Manual"/>
+   </txgeneratorwindow>
+   <scriptwindow autorun="0" file=""/>
+   <graphwindow duration="1" tabWidgetWidth="707" type="GraphWindow" viewType="0"/>
+  </tab>
+ </tabs>
+ <setup>
+  <network name="Network 1">
+   <interfaces>
+    <interface auto-restart="0" auto-restart-time="100" bitrate="500000" bitrate-fd="2000000" bus-type="can" can-fd="1" configure="1" custom-bitrate="144391" custom-fdbitrate="70920" driver="SLCAN" enabled="1" is-custom-bitrate="0" is-custom-fdbitrate="0" lin-baudrate="19200" lin-checksum-classic="0" lin-jitter-us="0" lin-ldf-path="" lin-listen-only="0" lin-node-mode="1" lin-protocol="4" lin-schedule-table="" lin-slave-node="" lin-timebase-ms="5" lin-wakeup-on-bus="0" listen-only="0" name="COM17" one-shot="0" sample-point="875" sample-point-fd="750" triple-sampling="0" type="can"/>
+   </interfaces>
+   <databases/>
+  </network>
+  <network name="Network 2">
+   <interfaces>
+    <interface auto-restart="0" auto-restart-time="100" bitrate="500000" bitrate-fd="2000000" bus-type="can" can-fd="0" configure="1" custom-bitrate="144391" custom-fdbitrate="70920" driver="Vector" enabled="0" is-custom-bitrate="0" is-custom-fdbitrate="0" lin-baudrate="19200" lin-checksum-classic="0" lin-jitter-us="0" lin-ldf-path="" lin-listen-only="0" lin-node-mode="1" lin-protocol="4" lin-schedule-table="" lin-slave-node="" lin-timebase-ms="5" lin-wakeup-on-bus="0" listen-only="0" name="Virtual Channel 1 (ch 0)" one-shot="0" sample-point="875" sample-point-fd="875" triple-sampling="0" type="can"/>
+   </interfaces>
+   <databases/>
+  </network>
+  <network name="Network 3">
+   <interfaces>
+    <interface auto-restart="0" auto-restart-time="100" bitrate="500000" bitrate-fd="2000000" bus-type="can" can-fd="0" configure="1" custom-bitrate="144391" custom-fdbitrate="70920" driver="Vector" enabled="0" is-custom-bitrate="0" is-custom-fdbitrate="0" lin-baudrate="19200" lin-checksum-classic="0" lin-jitter-us="0" lin-ldf-path="" lin-listen-only="0" lin-node-mode="1" lin-protocol="4" lin-schedule-table="" lin-slave-node="" lin-timebase-ms="5" lin-wakeup-on-bus="0" listen-only="0" name="Virtual Channel 2 (ch 1)" one-shot="0" sample-point="875" sample-point-fd="875" triple-sampling="0" type="can"/>
+   </interfaces>
+   <databases/>
+  </network>
+  <network name="Network 4">
+   <interfaces>
+    <interface auto-restart="0" auto-restart-time="100" bitrate="500000" bitrate-fd="2000000" bus-type="can" can-fd="0" configure="1" custom-bitrate="144391" custom-fdbitrate="70920" driver="zscanfd" enabled="0" is-custom-bitrate="0" is-custom-fdbitrate="0" lin-baudrate="19200" lin-checksum-classic="0" lin-jitter-us="0" lin-ldf-path="" lin-listen-only="0" lin-node-mode="1" lin-protocol="4" lin-schedule-table="" lin-slave-node="" lin-timebase-ms="5" lin-wakeup-on-bus="0" listen-only="0" name=" (ch 0)" one-shot="0" sample-point="875" sample-point-fd="875" triple-sampling="0" type="can"/>
+   </interfaces>
+   <databases/>
+  </network>
+  <network name="Network 5">
+   <interfaces>
+    <interface auto-restart="0" auto-restart-time="100" bitrate="500000" bitrate-fd="2000000" bus-type="can" can-fd="1" configure="1" custom-bitrate="144391" custom-fdbitrate="70920" driver="zscanfd" enabled="0" is-custom-bitrate="0" is-custom-fdbitrate="0" lin-baudrate="19200" lin-checksum-classic="0" lin-jitter-us="0" lin-ldf-path="" lin-listen-only="0" lin-node-mode="1" lin-protocol="4" lin-schedule-table="" lin-slave-node="" lin-timebase-ms="5" lin-wakeup-on-bus="0" listen-only="0" name=" (ch 1)" one-shot="0" sample-point="875" sample-point-fd="800" triple-sampling="0" type="can"/>
+   </interfaces>
+   <databases/>
+  </network>
+ </setup>
+</cangaroo-workspace>

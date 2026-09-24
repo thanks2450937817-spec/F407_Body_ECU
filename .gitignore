@@ -1,0 +1,38 @@
+# IDE settings
+.idea/
+**/.idea/
+.vscode/
+
+# CMake and embedded build output
+build/
+**/build/
+cmake-build-*/
+**/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+*.o
+*.obj
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+*.lst
+
+# Python cache and virtual environments
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and drawing-tool temporary files
+*.bkp
+*.bak
+*~
+
+# OS-generated files
+Thumbs.db
+.DS_Store

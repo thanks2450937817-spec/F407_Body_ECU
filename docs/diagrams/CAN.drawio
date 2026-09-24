@@ -1,0 +1,28 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="FTi_KxUwc_UC5WLTkPKQ">
+    <mxGraphModel dx="772" dy="1193" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UqgTXuo7clX_kKXzP2c0-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;PC：CAN诊断仪&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="UqgTXuo7clX_kKXzP2c0-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;CANgarro&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="UqgTXuo7clX_kKXzP2c0-7" edge="1" parent="1" source="UqgTXuo7clX_kKXzP2c0-1" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;fontFamily=Helvetica;fontSize=15;fontColor=default;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;width=0;endSize=3;" target="UqgTXuo7clX_kKXzP2c0-2" value="">
+          <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <mxPoint x="220" y="430" as="sourcePoint" />
+            <mxPoint x="320" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UqgTXuo7clX_kKXzP2c0-8" edge="1" parent="1" source="UqgTXuo7clX_kKXzP2c0-1" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;fontFamily=Helvetica;fontSize=15;fontColor=default;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="UqgTXuo7clX_kKXzP2c0-2" value="">
+          <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <mxPoint x="110" y="470" as="sourcePoint" />
+            <mxPoint x="210" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
