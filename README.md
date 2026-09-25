@@ -4,6 +4,12 @@
 
 当前版本已经走通从应用进入编程会话、复位到 Bootloader、传输完整固件、CRC 校验、再次复位并启动新应用的闭环。
 
+## 项目演示视频
+
+[![STM32F407 车身控制 ECU 实机演示](docs/images/project-demo-summary.png)](https://www.bilibili.com/video/BV1GFhm6qEd6/)
+
+点击封面观看完整实机演示，内容包括 CAN 心跳与车灯控制、UDS 会话与 DTC 管理，以及真实 BIN 固件的 CAN Bootloader 升级闭环。
+
 ## 已实现功能
 
 | 模块 | 功能 |
