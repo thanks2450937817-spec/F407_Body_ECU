@@ -2,7 +2,7 @@
 // Created by admin on 2026/9/18.
 
 
-// 从项目根目录运行PC工具：python .\tools\can_test.py
+// 从项目根目录运行PC工具：python C:\Users\admin\Desktop\Embedded\CAN\tools\can_test.py
 #include "Bootloader_uds.h"
 
 #define UDS_REQUEST_DOWNLOAD                   0x34U//下载请求
@@ -112,7 +112,7 @@ HAL_StatusTypeDef UDS_34_Process(const uint8_t *message,
     download_received_size = 0U;
     download_in_progress = 1;
     download_start_address = download_address;
-    download_start_address = download_size;
+    download_total_size = download_size;
     expected_block_sequence_counter = 1;
 
     return Bootloader_CAN_SendSingleFrame(message);
