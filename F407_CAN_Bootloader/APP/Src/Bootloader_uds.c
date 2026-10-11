@@ -16,7 +16,11 @@
 #define UDS_WRITE_START_ADDRESS                0x08010000U
 #define UDS_DATA_LENGTH                        0x00040000U
 
-#define UDS_NRC_GENERAL_PROGRAMMING_FAILURE    0x72U//一般编程错误
+#define UDS_NRC_INCORRECT_MESSAGE_LENGTH        0x13U//请求长度或格式错误
+#define UDS_NRC_REQUEST_SEQUENCE_ERROR          0x24U//未开始下载，或下载数据已收齐
+#define UDS_NRC_TRANSFER_DATA_SUSPENDED         0x71U//本块数据超过0x34声明的固件长度
+#define UDS_NRC_GENERAL_PROGRAMMING_FAILURE    0x72U//一般编程错误（写入或CRC校验失败）
+#define UDS_NRC_WRONG_BLOCK_SEQUENCE_COUNTER   0x73U//块序号不符合预期
 
 // typedef HAL_StatusTypeDef(*bootloader_function)(const uint8_t *,uint16_t);
 //
@@ -121,32 +125,57 @@ HAL_StatusTypeDef UDS_34_Process(const uint8_t *message,
 
 HAL_StatusTypeDef UDS_36_Process(const uint8_t *message,
     uint16_t message_length) {
-    uint32_t current_download_address =
-    download_start_address + download_received_size;
-    uint8_t block_sequence_counter = 0U;
-    if(download_in_progress != 1) {
-        return HAL_ERROR;
+    if (download_in_progress != 1U) {
+        download_in_progress = 0U;
+        return Bootloader_CAN_SendNegativeResponse(
+            UDS_TRANSFER_DATA, UDS_NRC_REQUEST_SEQUENCE_ERROR);
     }
-    if (message_length < 3) {
-        return HAL_ERROR;
+    /* ISO-TP接收缓冲区最多256字节，超长数据不能截断为uint8_t。 */
+    if (message_length < 3U || message_length > 256U) {
+        download_in_progress = 0U;
+        return Bootloader_CAN_SendNegativeResponse(
+            UDS_TRANSFER_DATA, UDS_NRC_INCORRECT_MESSAGE_LENGTH);
     }
-    uint8_t firmware_data_length = message_length - 2;
-    block_sequence_counter = message[1];
-    const uint8_t *firmware_data = &message[2];
+
+    if (download_received_size >= download_total_size) {
+        download_in_progress = 0U;
+        return Bootloader_CAN_SendNegativeResponse(
+            UDS_TRANSFER_DATA, UDS_NRC_REQUEST_SEQUENCE_ERROR);
+    }
+
+    uint8_t block_sequence_counter = message[1];
     if (block_sequence_counter != expected_block_sequence_counter) {
-        return HAL_ERROR;
+        download_in_progress = 0U;
+        return Bootloader_CAN_SendNegativeResponse(
+            UDS_TRANSFER_DATA, UDS_NRC_WRONG_BLOCK_SEQUENCE_COUNTER);
     }
+
+    uint8_t firmware_data_length = (uint8_t)(message_length - 2U);
     if (firmware_data_length > download_total_size - download_received_size) {
+        download_in_progress = 0U;
+        return Bootloader_CAN_SendNegativeResponse(
+            UDS_TRANSFER_DATA, UDS_NRC_TRANSFER_DATA_SUSPENDED);
+    }
+
+    uint32_t current_download_address =
+        download_start_address + download_received_size;
+    const uint8_t *firmware_data = &message[2];
+    if (Bootloader_Flash_WriteData(
+            current_download_address, firmware_data, firmware_data_length) != HAL_OK) {
+        download_in_progress = 0U;
+        return Bootloader_CAN_SendNegativeResponse(
+            UDS_TRANSFER_DATA, UDS_NRC_GENERAL_PROGRAMMING_FAILURE);
+    }
+
+    expected_block_sequence_counter++;
+    download_received_size += firmware_data_length;
+    if (Bootloader_CAN_SendSingleFrame(message) != HAL_OK) {
+        /* 数据可能已经写入，但正响应未能入队：不能继续本次下载。 */
+        download_in_progress = 0U;
         return HAL_ERROR;
     }
 
-    if (Bootloader_Flash_WriteData(current_download_address, firmware_data,firmware_data_length) != HAL_OK) {
-        download_in_progress = 0;
-        return HAL_ERROR;
-    }
-    expected_block_sequence_counter++;
-    download_received_size += firmware_data_length;
-    return Bootloader_CAN_SendSingleFrame(message);
+    return HAL_OK;
 }
 
 HAL_StatusTypeDef UDS_37_Process(const uint8_t *message,
